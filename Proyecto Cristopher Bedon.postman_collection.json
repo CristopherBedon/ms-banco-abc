@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "1010abd3-fb23-43c7-9055-bdd46c00743e",
+		"name": "Proyecto Cristopher Bedon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15401022"
+	},
+	"item": [
+		{
+			"name": "tipoDeCambio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://free.e-api.net.pe/tipo-cambio/today.json",
+					"protocol": "https",
+					"host": [
+						"free",
+						"e-api",
+						"net",
+						"pe"
+					],
+					"path": [
+						"tipo-cambio",
+						"today.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "74093065",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/tipo-cambio?dni=74093065",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"tipo-cambio"
+					],
+					"query": [
+						{
+							"key": "dni",
+							"value": "74093065"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "74093065?date=2024-06-01",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/tipo-cambio/usage/74093065?date=2025-08-20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"tipo-cambio",
+						"usage",
+						"74093065"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2025-08-20"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
