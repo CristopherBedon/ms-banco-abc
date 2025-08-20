@@ -8,10 +8,9 @@
 ## Levantar el microservicio y la base de datos
 
 1. **Clona el repositorio:**
-   ```sh
-   git clone https://github.com/tu-usuario/ms-banco-abc.git
-   cd ms-banco-abc
-   ```
+```sh
+git clone https://github.com/CristopherBedon/ms-banco-abc.git
+```
 
 2. **Construye el proyecto**  
 ```
