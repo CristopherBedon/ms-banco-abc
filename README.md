@@ -1,30 +1,83 @@
-## Configuración de la Base de Datos
+# ms-banco-abc
 
-Este proyecto utiliza PostgreSQL como base de datos. Para ejecutarlo correctamente en tu entorno local, sigue estos pasos:
+## Requisitos previos
 
-1. **Instala PostgreSQL** en tu máquina si no lo tienes instalado.
+- [Docker](https://www.docker.com/products/docker-desktop) y [Docker Compose](https://docs.docker.com/compose/) instalados
+- Java 21 y Maven (solo si deseas construir el proyecto manualmente)
 
-2. **Crea la base de datos y el usuario** ejecutando los siguientes comandos en tu terminal o herramienta favorita (por ejemplo, `psql` o PgAdmin):
+## Levantar el microservicio y la base de datos
 
-```sql
-CREATE DATABASE postgres;
-CREATE USER postgres WITH PASSWORD 'admin';
-GRANT ALL PRIVILEGES ON DATABASE postgres TO postgres;
+1. **Clona el repositorio:**
+   ```sh
+   git clone https://github.com/tu-usuario/ms-banco-abc.git
+   cd ms-banco-abc
+   ```
+
+2. **Construye el proyecto**  
+```
+./mvnw package
 ```
 
-Si ya tienes un usuario y base de datos con estos datos, puedes omitir este paso.
-1. Verifica la configuración en el archivo src/main/resources/application.properties
-   Asegúrate de que los parámetros de conexión a la base de datos sean correctos. Deberían verse así:
-
-```properties
-quarkus.datasource.db-kind=postgresql
-quarkus.datasource.username=postgres
-quarkus.datasource.password=admin
-quarkus.datasource.jdbc.url=jdbc:postgresql://localhost:5432/postgres
-quarkus.hibernate-orm.database.generation=update
+3. **Levanta los servicios con Docker Compose**
 ```
-1. Opcional: Si necesitas cambiar el usuario, contraseña o nombre de la base de datos, actualiza el archivo application.properties con tus valores.  
-2. Ejecuta la aplicación siguiendo las instrucciones anteriores.
+docker-compose up --build
+```
+Esto iniciará:  
+* La base de datos PostgreSQL en el puerto 5432
+* El microservicio en el puerto 8080
 
-<hr></hr> 
-Si tienes problemas de conexión, asegúrate de que el servicio de PostgreSQL esté corriendo y que los datos de acceso sean correctos.
+4. **Verifica que el microservicio está corriendo**
+Prueba la Colección de Postman adjunta en la repo
+
+## Acceso a la base de datos
+Puedes conectarte a la base de datos con un cliente PostgreSQL usando
+* Host: localhost
+* Puerto: 5432
+* Usuario: postgres
+* Contraseña: admin
+* Base de datos: postgres
+
+O bien, accede desde el contenedor:
+Abre Docker Desktop.
+Selecciona el contenedor db y haz clic en EXEC.
+
+Ejecuta:
+```
+psql -U postgres -d postgres
+```
+
+## Comandos útiles en PostgreSQL
+
+Listar tablas:
+```
+\dt
+```
+
+Consultar una tabla:
+```
+SELECT * FROM tipocambiodolares;
+```
+
+Limpiar la consola de psql:
+En Linux/Mac:
+```
+\! clear
+```
+En Windows:
+```
+\! cls
+```
+
+## Detener los servicios
+```
+docker-compose down
+```
+
+
+
+
+
+
+
+
+
